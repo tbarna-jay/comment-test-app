@@ -64,7 +64,7 @@ const GaugeChart: React.FC<GaugeChartProps> = ({ value, max }) => {
 
   return (
     <svg
-      aria-label={`Words count :${value}`}
+      aria-label={`Words count: ${value}`}
       ref={ref}
       width={size}
       height={size}
