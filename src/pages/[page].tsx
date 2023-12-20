@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import List from "@/components/List";
+import getWordCount from "@/helpers/getWordsCount";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 
@@ -56,19 +57,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
   try {
     comments = await res.json();
   } catch (e) {
-    error = "Oops! We're having trouble loading the comments right now.";
+    throw new Error(
+      "Oops! We're having trouble loading the comments right now."
+    );
   }
 
   const commentsWithWordNumber = comments.map((comment) => ({
     ...comment,
-    wordNumber: comment.body.replace(/\n/g, " ").split(/\s+/).length,
+    wordNumber: getWordCount(comment.body),
   }));
 
   return {
     props: {
       comments: commentsWithWordNumber,
       page,
-      error,
     },
     revalidate: 600, // ISR - Revalidate every 10 minutes (600 seconds)
   };
