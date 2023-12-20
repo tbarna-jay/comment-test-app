@@ -1,3 +1,4 @@
+import GaugeChart from "@/components/GaugeChart";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -19,15 +20,16 @@ type CommentsPageProps = {
   page: string;
 };
 
-const commentsPerPage = 10;
+const commentsPerPage = 100;
 const totalComments = 500;
 
 const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
   const router = useRouter();
+  const title = `Take home test page: ${page}`;
   return (
     <>
       <Head>
-        <title>Take home test</title>
+        <title>{title}</title>
       </Head>
       <main
         className={`flex min-h-screen flex-col items-center justify-between p-24`}
@@ -53,6 +55,7 @@ const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
               className="p-4 bg-white rounded-lg shadow-md mb-4 block"
             >
               <div className="flex items-center gap-4">
+                <GaugeChart value={wordNumber} max={35} />
                 <div>
                   <h2 className="font-semibold text-sm">
                     {name} w: {wordNumber}
