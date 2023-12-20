@@ -18,7 +18,7 @@ type ButtonProps = {
 
 const Button: FC<ButtonProps> = ({ onClick, disabled, children, icon }) => (
   <button
-    className="border-2 border-gray-300 rounded-md p-1 flex items-center justify-center"
+    className="border-2 border-gray-300 rounded-full p-1 flex w-10 h-10 items-center justify-center"
     type="button"
     disabled={disabled}
     onClick={onClick}
