@@ -1,8 +1,7 @@
-import GaugeChart from "@/components/GaugeChart";
 import Header from "@/components/Header";
+import List from "@/components/List";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 interface Comment {
   postId: number;
@@ -12,7 +11,7 @@ interface Comment {
   body: string;
 }
 
-interface CommentWithMeta extends Comment {
+export interface CommentWithMeta extends Comment {
   wordNumber: number;
 }
 
@@ -39,23 +38,7 @@ const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
       <main
         className={`flex min-h-screen flex-col items-center justify-between p-24`}
       >
-        <ul>
-          {comments.map(({ id, name, email, body, wordNumber }) => (
-            <li
-              key={id}
-              className="p-4 bg-white rounded-lg shadow-md mb-4 block"
-            >
-              <div className="flex items-center gap-4">
-                <GaugeChart value={wordNumber} max={35} />
-                <div>
-                  <h2 className="font-semibold text-sm">{name}</h2>
-                  <time className="text-sm text-gray-500">{email}</time>
-                </div>
-              </div>
-              <p className="text-sm leading-loose text-gray-500 mt-4">{body}</p>
-            </li>
-          ))}
-        </ul>
+        <List comments={comments} />
       </main>
     </>
   );
