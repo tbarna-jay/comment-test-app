@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import List from "@/components/List";
 import getWordCount from "@/helpers/getWordsCount";
@@ -41,6 +42,7 @@ const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
       >
         <List comments={comments} />
       </main>
+      <Footer />
     </>
   );
 };
