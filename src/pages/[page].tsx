@@ -1,8 +1,8 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import List from "@/components/List";
-import getWordCount from "@/helpers/getWordsCount";
-import { ColorState } from "@/stores/colorStore";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import List from "../components/List";
+import getWordCount from "../helpers/getWordsCount";
+import { ColorState } from "../stores/colorStore";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { useSelector } from "react-redux";
@@ -43,7 +43,7 @@ const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
         commentsPerPage={commentsPerPage}
       />
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24`}
+        className={`flex min-h-screen flex-col items-center justify-between px-6 py-20 sm:px-14`}
       >
         <List comments={comments} />
       </main>

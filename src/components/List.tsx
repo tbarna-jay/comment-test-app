@@ -1,5 +1,5 @@
-import GaugeChart from "@/components/GaugeChart";
-import { CommentWithMeta } from "@/pages/[page]";
+import GaugeChart from "../components/GaugeChart";
+import { CommentWithMeta } from "../pages/[page]";
 import { FC } from "react";
 
 type ListProps = {
@@ -10,7 +10,10 @@ const List: FC<ListProps> = ({ comments }) => {
   return (
     <ul>
       {comments.map(({ id, name, email, body, wordNumber }) => (
-        <li key={id} className="p-4 bg-white rounded-lg shadow-md mb-4 block">
+        <li
+          key={id}
+          className="p-4 bg-white rounded-lg shadow-md mb-4 block min-w-60"
+        >
           <div className="flex items-center gap-4">
             <GaugeChart value={wordNumber} max={35} />
             <div>

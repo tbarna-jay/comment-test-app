@@ -39,7 +39,7 @@ const Header: FC<HeaderProps> = ({ page, totalComments, commentsPerPage }) => {
       <Button onClick={nextPage} icon="⇦" disabled={page === 1}>
         Previous
       </Button>
-      <h1 className="text-2xl font-bold text-center">
+      <h1 className="text-xl font-bold text-center">
         Comments list page {page}
       </h1>
       <Button onClick={prevPage} icon="⇨" disabled={isLastPage}>

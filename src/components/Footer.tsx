@@ -1,4 +1,4 @@
-import { toggleColor } from "@/stores/colorStore";
+import { toggleColor } from "../stores/colorStore";
 import { useDispatch } from "react-redux";
 
 const Footer = () => {
