@@ -2,8 +2,10 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import List from "@/components/List";
 import getWordCount from "@/helpers/getWordsCount";
+import { ColorState } from "@/stores/colorStore";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
+import { useSelector } from "react-redux";
 
 interface Comment {
   postId: number;
@@ -27,8 +29,11 @@ const totalComments = 500;
 
 const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
   const title = `Take home test page: ${page}`;
+  const alternativeColor = useSelector(
+    (state: { color: ColorState }) => state.color.alternativeColor
+  );
   return (
-    <>
+    <div className={alternativeColor ? "bg-[#0080af]" : ""}>
       <Head>
         <title>{title}</title>
       </Head>
@@ -43,7 +48,7 @@ const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
         <List comments={comments} />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
@@ -51,7 +56,6 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const page = context.params?.page as string;
-  let error = "";
   let comments: Comment[] = [];
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=${commentsPerPage}`
