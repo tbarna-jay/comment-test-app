@@ -1,4 +1,5 @@
 import GaugeChart from "@/components/GaugeChart";
+import Header from "@/components/Header";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -20,34 +21,24 @@ type CommentsPageProps = {
   page: string;
 };
 
-const commentsPerPage = 100;
+const commentsPerPage = 10;
 const totalComments = 500;
 
 const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
-  const router = useRouter();
   const title = `Take home test page: ${page}`;
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
+      <Header
+        page={Number(page)}
+        totalComments={totalComments}
+        commentsPerPage={commentsPerPage}
+      />
       <main
         className={`flex min-h-screen flex-col items-center justify-between p-24`}
       >
-        <div className="p-4 bg-white rounded-lg shadow-md mb-4">
-          <h1>Comments list page {page}</h1>
-          <div>
-            <button
-              disabled={page <= "1"}
-              onClick={() => router.push(`/${parseInt(page, 10) - 1}`)}
-            >
-              Previous
-            </button>
-            <button onClick={() => router.push(`/${parseInt(page, 10) + 1}`)}>
-              Next
-            </button>
-          </div>
-        </div>
         <ul>
           {comments.map(({ id, name, email, body, wordNumber }) => (
             <li
@@ -57,9 +48,7 @@ const Home: React.FC<CommentsPageProps> = ({ comments, page }) => {
               <div className="flex items-center gap-4">
                 <GaugeChart value={wordNumber} max={35} />
                 <div>
-                  <h2 className="font-semibold text-sm">
-                    {name} w: {wordNumber}
-                  </h2>
+                  <h2 className="font-semibold text-sm">{name}</h2>
                   <time className="text-sm text-gray-500">{email}</time>
                 </div>
               </div>
