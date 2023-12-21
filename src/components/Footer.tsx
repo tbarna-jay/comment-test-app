@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="fixed bottom-0 left-0 w-full bg-white flex items-center justify-between px-4 py-2 shadow-md">
       <button
         onClick={() => dispatch(toggleColor())}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
       >
         Toggle color
       </button>
