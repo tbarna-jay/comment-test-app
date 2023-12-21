@@ -1,5 +1,11 @@
 This is a take home task.
 
+Install:
+
+```bash
+npm i
+```
+
 ## Getting Started
 
 First, run the development server:
